@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf8"?>
+<VideoStabilizer>
+    <!--
+        zoom_ratio_ois_switch  : "触发OIS运动抵消动作的阈值"
+        coeff_ois_trans_step   : "coeff_max和coeff_min切换的步长"
+        coeff_max_ois_switch   : "抵消OIS运动最大系数"
+        coeff_min_ois_switch   : "抵消OIS运动最小系数"
+        is_fixed_num_frame     : "判断是否为稳定模式所使用的帧数"
+        is_fixed_th_low        : "由稳定模式off进入on的阈值,越小越难进入稳定模式"
+        is_fixed_th_high       : "有稳定模式on进入off的阈值,越小越容易跳脱出稳定模式"
+        is_shaking_th          : "控制手震模式on/off的阈值，越大遇难计入"
+        barrier_fix_scale      : "降低这个值微调模式就会变敏感"
+        barrier_fix_offset     : "从固定模式进入微调模式时使用的累积位移量,越大越难进入微调模式"
+        barrier_fix_power      : "降低这个值微调模式就会变更加敏感,不推荐更改"
+        barrier_follow_scale   : "降低这个跟随模式就会变敏感"
+        barrier_follow_offset  : "不推荐更动这个值"
+        barrier_follow_power   : "降低这个值，跟随模式就会变得更加敏感,不推荐更改"
+        is_shaking_num_frame   : "判断是否是手震所使用的帧数"
+        barrier_shake_scale    : "降低这个值，手震模式就会变敏感"
+        barrier_shake_offset   : "不推荐更动这个值"
+        barrier_shake_power    : "降低这个值，手震模式就会变得更加敏感,不推荐更改"
+        coeff_trans_to_fix     : "切换到稳定模式的速度,增加此值会加快切换速度,最大值为1"
+        coeff_trans_to_follow  : "切换到跟随模式的速度,增加此值会加快切换速度,最大值为1"
+        coeff_trans_to_shake   : "切换到手震模式的速度,增加此值会加快切换速度,最大值为1"
+        barrier_scale_z        : "降低这个值z轴的防抖就会减弱,在非稳定模式的时候有效"
+        coeff_averaging        : "最终结果取平均的强度,此值越小取平均的强度越大,最大值为1"
+        coeff_stab_roll_fix    : "稳定模式下roll方向的补偿强度,此值越小补偿强度越大"
+    -->
+    <UltrazoomEIS>
+        <ois_switch>
+            <zoom_ratio_ois_switch  type="double"   default="0     ">40</zoom_ratio_ois_switch>
+            <coeff_ois_trans_step   type="double"   default="0.1   ">0.01</coeff_ois_trans_step>
+            <coeff_max_ois_switch   type="double"   default="0     ">1.0</coeff_max_ois_switch>
+            <coeff_min_ois_switch   type="double"   default="0     ">0</coeff_min_ois_switch>
+        </ois_switch>
+
+        <ultrazoom_thd              type="double"   default="20"    >20.0</ultrazoom_thd>
+
+        <zoom_ratio value="1.0">
+            <is_fixed_num_frame     type="int"      default="16"    >24</is_fixed_num_frame>
+            <is_fixed_th_low        type="double"   default="0.0080">0.002</is_fixed_th_low>
+            <is_fixed_th_high       type="double"   default="0.0320">0.006</is_fixed_th_high>
+            <is_shaking_th          type="double"   default="0.0300">1</is_shaking_th>
+            <barrier_fix_scale      type="double"   default="0.1200">0.08</barrier_fix_scale>
+            <barrier_fix_offset     type="double"   default="1.0000">0.05</barrier_fix_offset>
+            <barrier_fix_power      type="double"   default="2.0000">2.0</barrier_fix_power>
+            <barrier_follow_scale   type="double"   default="0.1200">0.24</barrier_follow_scale>
+            <barrier_follow_offset  type="double"   default="0.0000">0</barrier_follow_offset>
+            <barrier_follow_power   type="double"   default="2.0000">2.0</barrier_follow_power>
+            <is_shaking_num_frame   type="int"      default="32"    >32</is_shaking_num_frame>
+            <barrier_shake_scale    type="double"   default="1.2000">1.2</barrier_shake_scale>
+            <barrier_shake_offset   type="double"   default="0.0000">0</barrier_shake_offset>
+            <barrier_shake_power    type="double"   default="2.0000">2.0</barrier_shake_power>
+            <coeff_trans_to_fix     type="double"   default="0.1000">0.1</coeff_trans_to_fix>
+            <coeff_trans_to_follow  type="double"   default="0.1000">0.1</coeff_trans_to_follow>
+            <coeff_trans_to_shake   type="double"   default="0.1000">0.1</coeff_trans_to_shake>
+            <barrier_scale_z        type="double"   default="0.1000">0.1</barrier_scale_z>
+            <coeff_averaging        type="double"   default="0.5000">1.0</coeff_averaging>
+            <coeff_stab_roll_fix    type="double"   default="0.0625">0.0625</coeff_stab_roll_fix>
+        </zoom_ratio>
+
+        <zoom_ratio value="20.0">
+            <is_fixed_num_frame     type="int"      default="16"    >16</is_fixed_num_frame>
+            <is_fixed_th_low        type="double"   default="0.0080">0.002</is_fixed_th_low>
+            <is_fixed_th_high       type="double"   default="0.0320">0.032</is_fixed_th_high>
+            <is_shaking_th          type="double"   default="0.0300">1</is_shaking_th>
+            <barrier_fix_scale      type="double"   default="0.1200">0.24</barrier_fix_scale>
+            <barrier_fix_offset     type="double"   default="1.0000">0.05</barrier_fix_offset>
+            <barrier_fix_power      type="double"   default="2.0000">2.0</barrier_fix_power>
+            <barrier_follow_scale   type="double"   default="0.1200">0.24</barrier_follow_scale>
+            <barrier_follow_offset  type="double"   default="0.0000">0</barrier_follow_offset>
+            <barrier_follow_power   type="double"   default="2.0000">2</barrier_follow_power>
+            <is_shaking_num_frame   type="int"      default="32"    >64</is_shaking_num_frame>
+            <barrier_shake_scale    type="double"   default="1.2000">1.2</barrier_shake_scale>
+            <barrier_shake_offset   type="double"   default="0.0000">0</barrier_shake_offset>
+            <barrier_shake_power    type="double"   default="2.0000">2.0</barrier_shake_power>
+            <coeff_trans_to_fix     type="double"   default="0.1000">0.1</coeff_trans_to_fix>
+            <coeff_trans_to_follow  type="double"   default="0.1000">0.1</coeff_trans_to_follow>
+            <coeff_trans_to_shake   type="double"   default="0.1000">0.1</coeff_trans_to_shake>
+            <barrier_scale_z        type="double"   default="0.1000">0.1</barrier_scale_z>
+            <coeff_averaging        type="double"   default="0.5000">1.0</coeff_averaging>
+            <coeff_stab_roll_fix    type="double"   default="0.0625">0.0625</coeff_stab_roll_fix>
+        </zoom_ratio>
+
+        <zoom_ratio value="50.0">
+            <is_fixed_num_frame     type="int"      default="16"    >16</is_fixed_num_frame>
+            <is_fixed_th_low        type="double"   default="0.0080">0.002</is_fixed_th_low>
+            <is_fixed_th_high       type="double"   default="0.0320">0.064</is_fixed_th_high>
+            <is_shaking_th          type="double"   default="0.0300">1</is_shaking_th>
+            <barrier_fix_scale      type="double"   default="0.1200">0.24</barrier_fix_scale>
+            <barrier_fix_offset     type="double"   default="1.0000">0.1</barrier_fix_offset>
+            <barrier_fix_power      type="double"   default="2.0000">2.0</barrier_fix_power>
+            <barrier_follow_scale   type="double"   default="0.1200">0.24</barrier_follow_scale>
+            <barrier_follow_offset  type="double"   default="0.0000">0</barrier_follow_offset>
+            <barrier_follow_power   type="double"   default="2.0000">2</barrier_follow_power>
+            <is_shaking_num_frame   type="int"      default="32"    >100</is_shaking_num_frame>
+            <barrier_shake_scale    type="double"   default="1.2000">1.2</barrier_shake_scale>
+            <barrier_shake_offset   type="double"   default="0.0000">0</barrier_shake_offset>
+            <barrier_shake_power    type="double"   default="2.0000">2.0</barrier_shake_power>
+            <coeff_trans_to_fix     type="double"   default="0.1000">0.1</coeff_trans_to_fix>
+            <coeff_trans_to_follow  type="double"   default="0.1000">0.1</coeff_trans_to_follow>
+            <coeff_trans_to_shake   type="double"   default="0.1000">0.1</coeff_trans_to_shake>
+            <barrier_scale_z        type="double"   default="0.1000">0.1</barrier_scale_z>
+            <coeff_averaging        type="double"   default="0.5000">1.0</coeff_averaging>
+            <coeff_stab_roll_fix    type="double"   default="0.0625">0.0625</coeff_stab_roll_fix>
+        </zoom_ratio>
+
+        <zoom_ratio value="70.0">
+            <is_fixed_num_frame     type="int"      default="16"    >16</is_fixed_num_frame>
+            <is_fixed_th_low        type="double"   default="0.0080">0.002</is_fixed_th_low>
+            <is_fixed_th_high       type="double"   default="0.0320">0.032</is_fixed_th_high>
+            <is_shaking_th          type="double"   default="0.0300">1</is_shaking_th>
+            <barrier_fix_scale      type="double"   default="0.1200">0.12</barrier_fix_scale>
+            <barrier_fix_offset     type="double"   default="1.0000">0.2</barrier_fix_offset>
+            <barrier_fix_power      type="double"   default="2.0000">2.0</barrier_fix_power>
+            <barrier_follow_scale   type="double"   default="0.1200">0.24</barrier_follow_scale>
+            <barrier_follow_offset  type="double"   default="0.0000">0</barrier_follow_offset>
+            <barrier_follow_power   type="double"   default="2.0000">2</barrier_follow_power>
+            <is_shaking_num_frame   type="int"      default="32"    >32</is_shaking_num_frame>
+            <barrier_shake_scale    type="double"   default="1.2000">1.2</barrier_shake_scale>
+            <barrier_shake_offset   type="double"   default="0.0000">0</barrier_shake_offset>
+            <barrier_shake_power    type="double"   default="2.0000">2.0</barrier_shake_power>
+            <coeff_trans_to_fix     type="double"   default="0.1000">0.1</coeff_trans_to_fix>
+            <coeff_trans_to_follow  type="double"   default="0.1000">0.1</coeff_trans_to_follow>
+            <coeff_trans_to_shake   type="double"   default="0.1000">0.1</coeff_trans_to_shake>
+            <barrier_scale_z        type="double"   default="0.1000">0.1</barrier_scale_z>
+            <coeff_averaging        type="double"   default="0.5000">1.0</coeff_averaging>
+            <coeff_stab_roll_fix    type="double"   default="0.0625">0.0625</coeff_stab_roll_fix>
+        </zoom_ratio>
+    </UltrazoomEIS>
+</VideoStabilizer>
